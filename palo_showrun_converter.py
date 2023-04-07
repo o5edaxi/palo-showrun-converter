@@ -12,12 +12,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Takes a file containing PanOS output of '
                                                  'operational commands with curly braces, such as '
                                                  '"show running security-policy", and outputs it to'
-                                                 'terminal in CSV or JSON format. It also breaks up'
-                                                 'multi-entry fields (e.g. a policy with multiple '
-                                                 'destination addresses enclosed in square '
-                                                 'brackets) and turns them into actual JSON lists '
+                                                 ' terminal in CSV or JSON format. It also breaks'
+                                                 ' up multi-entry fields (e.g. a policy with '
+                                                 'multiple destination addresses enclosed in square'
+                                                 ' brackets) and turns them into actual JSON lists '
                                                  'and multi-line CSV fields, prepending a "!" when'
-                                                 'the field has the Negate option selected.')
+                                                 ' the field has the Negate option selected.')
     parser.add_argument('input_file', type=str, help='Text file containing the command output')
     parser.add_argument('-s', '--csv-sep', type=str, default=',', help='CSV separator. Default: ,')
     parser.add_argument('-j', '--json', action='store_true', help='Output JSON instead of CSV')
