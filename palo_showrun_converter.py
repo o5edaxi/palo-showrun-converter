@@ -47,16 +47,19 @@ if __name__ == "__main__":
                     negate = '!'
                     column_content = column_content[:-len('(negate)')]
                 # Split "[  ]" into actual lists
-                if column_content[0] == '[' and column_content[-1] == ']':
-                    column_content = column_content.replace('[', '').replace(']', '').split()
-                    column_content = [negate + f for f in column_content]
-                    if not args.json:
-                        content_string = ''
-                        for g in column_content:
-                            content_string += g + '\n'
-                        column_content = content_string.strip()
-                else:
-                    column_content = negate + column_content
+                try:
+                    if column_content[0] == '[' and column_content[-1] == ']':
+                        column_content = column_content.replace('[', '').replace(']', '').split()
+                        column_content = [negate + f for f in column_content]
+                        if not args.json:
+                            content_string = ''
+                            for g in column_content:
+                                content_string += g + '\n'
+                            column_content = content_string.strip()
+                    else:
+                        column_content = negate + column_content
+                except IndexError:
+                    continue
                 csv_row_dict[column_title] = column_content
                 if column_title not in keys:
                     keys.append(column_title)
